@@ -202,7 +202,7 @@ def trades(
     offset: int = Query(0, ge=0, description="Number of trades to skip for pagination"),
     rpc: RPC = Depends(get_rpc),
 ):
-    return rpc._rpc_trade_history(limit, offset=offset, order_by_id=True)
+    return rpc._rpc_trade_history(limit, offset=offset, order_by_id=False)
 
 
 @router.get("/trade/{tradeid}", response_model=OpenTradeSchema, tags=["info", "trading"])
