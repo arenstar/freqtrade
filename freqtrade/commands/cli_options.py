@@ -83,7 +83,8 @@ AVAILABLE_CLI_OPTIONS = {
         "-d",
         "--datadir",
         "--data-dir",
-        help="Path to directory with historical backtesting data.",
+        help="Path to the base directory of the exchange with historical backtesting data. "
+        "To see futures data, use trading-mode additionally.",
         metavar="PATH",
     ),
     "user_data_dir": Arg(
@@ -260,6 +261,13 @@ AVAILABLE_CLI_OPTIONS = {
         type=check_int_positive,
         metavar="INT",
         default=constants.HYPEROPT_EPOCH,
+    ),
+    "early_stop": Arg(
+        "--early-stop",
+        help="Early stop hyperopt if no improvement after (default: %(default)d) epochs.",
+        type=check_int_positive,
+        metavar="INT",
+        default=0,  # 0 to disable by default
     ),
     "spaces": Arg(
         "--spaces",
